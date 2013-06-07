@@ -3,9 +3,9 @@ require "socket"
 server = "chat.freenode.net"
 port = "6667"
 nick = "PootieBot"
-channel = "#bitmakerlobs"
-greeting_prefix = "PRIVMSG #bitmakerlobs :"
-greetings = ["hello", "hi", "hola", "yo", "wazup", "guten tag", "howdy", "salutations", "who the hell are you?"]
+channel = "#bitmaker"
+greeting_prefix = "PRIVMSG #bitmaker :"
+greetings = ["hello", "hi", "hola", "yo", "wazup", "guten tag", "howdy", "salutations", "who the hell are you?","+","bot","I"]
 POOTIE = ["you're a baddy daddy lamatai tebby chai!","Sepatown!","Sa da tay!","Ain't come one, but many tine tanies!","Kappa-chow!","I gots to say na nay no","Cole me on the panny sty",]
 
 s = TCPSocket.open(server, port)
