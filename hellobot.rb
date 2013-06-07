@@ -2,7 +2,7 @@ require "socket"
 
 server = "chat.freenode.net"
 port = "6667"
-nick = "DrewzBot"
+nick = "PootieBot"
 channel = "#bitmakerlobs"
 greeting_prefix = "PRIVMSG #bitmakerlobs :"
 greetings = ["hello", "hi", "hola", "yo", "wazup", "guten tag", "howdy", "salutations", "who the hell are you?"]
