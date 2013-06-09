@@ -3,10 +3,10 @@ require "socket"
 server = "chat.freenode.net"
 port = "6667"
 nick = "PootieBot"
-channel = "#bitmaker"
-greeting_prefix = "PRIVMSG #bitmaker :"
-greetings = ["hello", "hi", "hola", "yo", "wazup", "guten tag", "howdy", "salutations", "who the hell are you?","+","bot","I"]
-POOTIE = ["you're a baddy daddy lamatai tebby chai!","Sepatown!","Sa da tay!","Ain't come one, but many tine tanies!","Kappa-chow!","I gots to say na nay no","Cole me on the panny sty",]
+channel = "#bitmakerlobs"
+greeting_prefix = "PRIVMSG #bitmakerlobs :"
+greetings = ["hello", "hi", "hola", "yo", "wazup", "why", "howdy", "salutations", "who the hell are you?","+","bot","I","lunch","food"]
+POOTIE = ["you're a baddy daddy lamatai tebby chai!","Sepatown!","Sa da tay!","Ain't come one, but many tine tanies!","Kappa-chow!","I gots to say na nay no","Cole me on the panny sty","Wadda tah!","Camietowns a biddie; wapatah to the bammies on the Pannie Stai!","Cigarettes/Fast food = Netatai Baddy!","That's a canapan to the semachai","Capachow!","You a Bammy Lammy!"]
 
 s = TCPSocket.open(server, port)
 # print("addr: ", s.addr.join(":"), "\n")
@@ -14,14 +14,14 @@ s = TCPSocket.open(server, port)
 s.puts "USER testing 0 * Testing"
 s.puts "NICK #{nick}"
 s.puts "JOIN #{channel}"
-s.puts "PRIVMSG #{channel} :Hello from IRB Bot"
+s.puts "PRIVMSG #{channel} :Got my dillies on the peppa-tane"
 
 
 until s.eof? do
   msg = s.gets
   puts msg
 
- wasGreeted = false
+  wasGreeted = false
   greetings.each do |greeting|
     if msg.include? greeting
       wasGreeted = true 
@@ -35,6 +35,9 @@ until s.eof? do
     s.puts "PRIVMSG #{channel} :#{response}"
   end
 
+  if msg.include? "Stop it pootie bot".downcase
+    break
+  end
 end
 
 

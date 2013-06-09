@@ -7,7 +7,7 @@ require_relative "database"
 
 def connect_to_server
   server = "chat.freenode.net"
-  port = "8001"
+  port = "6667"
   nick = "CRMBot"
   irc_server = TCPSocket.open(server, port)
   irc_server.puts "USER bcrmbot 0 * BCRMBot"
@@ -20,27 +20,24 @@ def send_message(msg) #sends a message in the current channel
   @irc_server.puts "PRIVMSG #{@channel} :#{msg}"
 end
 
-def channel_message?(msg) #Only communicates with peope in the current channel
+def channel_message?(msg) #Only communicates with people in the current channel
   msg.include?(@greeting_prefix)
 end
 
-def crm?(msg) #
-  msg.include? @crm_prefix
-end
 
 def output_command_prompt
 	send_message "Enter your choice: "
 	send_message "To add a contact, type 1" 
 	send_message "To display all contacts, type 2"
-	send_message "To modify a contact, type 3" 
-	send_message "To display by attribute, type 4" 
-	send_message "To display by contact, type 5" 
-	send_message "To delete contact, type 6"
-	send_message "To exit, type 0"
+	# send_message "To modify a contact, type 3" 
+	# send_message "To display by attribute, type 4" 
+	# send_message "To display by contact, type 5" 
+	# send_message "To delete contact, type 6"
+	# send_message "To exit, type 0"
 end
 
 def extract_input(msg)
-  msg.chomp[-1]
+  msg.chomp
 end
  
 # Establish a connection and join the #bitmakerlob channel
@@ -54,7 +51,9 @@ until @irc_server.eof? do
   msg = @irc_server.gets
   puts msg
 
- 	case msg
+  input = extract_input(msg)
+  
+ 	case input
 			when "1"
 				@database.add_contact
 			when "2"
@@ -73,7 +72,7 @@ until @irc_server.eof? do
 				break
 			end
  
-			output_command_prompt
+			# output_command_prompt
 
 end
 
